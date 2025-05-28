@@ -1,0 +1,14 @@
+D:\projects_c#\lab1\task 4\bin\Debug\net8.0\task 4.exe
+D:\projects_c#\lab1\task 4\bin\Debug\net8.0\task 4.deps.json
+D:\projects_c#\lab1\task 4\bin\Debug\net8.0\task 4.runtimeconfig.json
+D:\projects_c#\lab1\task 4\bin\Debug\net8.0\task 4.dll
+D:\projects_c#\lab1\task 4\bin\Debug\net8.0\task 4.pdb
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.AssemblyInfoInputs.cache
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.AssemblyInfo.cs
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.csproj.CoreCompileInputs.cache
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.dll
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\refint\task 4.dll
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.pdb
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\task 4.genruntimeconfig.cache
+D:\projects_c#\lab1\task 4\obj\Debug\net8.0\ref\task 4.dll
