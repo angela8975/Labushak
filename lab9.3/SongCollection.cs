@@ -9,16 +9,20 @@ namespace lab9._3
 {
     public class SongCollection
     {
-        public List<Song> Songs { get; set; } = new();
+        public Song[] Songs { get; set; } = new();
 
-        public void AddSong(Song song) => Songs.Add(song);
+        public void AddSong(Song song) {
+            int newindex = Songs.Length;
+            Array.Resize(ref Songs, newindex + 1)
+                Songs[newindex] = song;
+        }
 
         public bool RemoveSong(string title)
         {
-            var song = Songs.FirstOrDefault(s => s.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
-            if (song != null)
+            int index = Array.FindIndex(Songs, s => s.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+            if (index != -1)
             {
-                Songs.Remove(song);
+                Songs = Songs.Where((_,i)=>i != index).Toarrat();
                 return true;
             }
             return false;
@@ -26,7 +30,7 @@ namespace lab9._3
 
         public bool EditSong(string title, Song newSong)
         {
-            var index = Songs.FindIndex(s => s.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+            int index = Array.FindIndex(Songs, s => s.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
             if (index != -1)
             {
                 Songs[index] = newSong;
@@ -35,14 +39,14 @@ namespace lab9._3
             return false;
         }
 
-        public List<Song> SearchByPerformer(string performer)
+        public Song[] SearchByPerformer(string performer)
         {
-            return Songs.Where(s => s.Performers.Any(p => p.Equals(performer, StringComparison.OrdinalIgnoreCase))).ToList();
+            return Songs.Where(s => s.Performers.Any(p => p.Equals(performer, StringComparison.OrdinalIgnoreCase))).ToArray();
         }
 
-        public List<Song> Search(Func<Song, bool> predicate)
+        public Song[] Search(Func<Song, bool> predicate)
         {
-            return Songs.Where(predicate).ToList();
+            return Songs.Where(predicate).ToArray();
         }
 
         public void SaveToFile(string filePath)
@@ -56,7 +60,7 @@ namespace lab9._3
             if (File.Exists(filePath))
             {
                 var json = File.ReadAllText(filePath);
-                Songs = JsonSerializer.Deserialize<List<Song>>(json) ?? new();
+                Songs = JsonSerializer.Deserialize<Song[]>(json) ?? new Song[0];
             }
         }
     }
