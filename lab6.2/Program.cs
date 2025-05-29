@@ -3,44 +3,46 @@
 namespace lab6._2
 {
     class Program
+{
+    static void Main()
     {
-        static void Main()
+        Transport[] transports = new Transport[10];
+        int count = 0;
+
+        try
         {
-            List<Transport> transports = new List<Transport>();
+            transports[count++] = new Car("Toyota", 1);
+            transports[count++] = new Car("BMW");
+            transports[count++] = new Train("Intercity", 10);
+            transports[count++] = new Train("Night Express");
+            transports[count++] = new Express("Hyundai", 8, 250);
+            transports[count++] = new Express("SuperFast");
 
-            try
+            Console.WriteLine("Інформація про транспорт:");
+            for (int i = 0; i < count; i++)
             {
-                transports.Add(new Car("Toyota", 1));
-                transports.Add(new Car("BMW"));
-                transports.Add(new Train("Intercity", 10));
-                transports.Add(new Train("Night Express"));
-                transports.Add(new Express("Hyundai", 8, 250));
-                transports.Add(new Express("SuperFast"));
-
-                Console.WriteLine("Інформація про транспорт:");
-                foreach (var t in transports)
-                {
-                    t.DisplayInfo();
-                }
-
-                // Варіант запиту: кількість автомобілів (на автостоянці)
-                int carCount = 0;
-                foreach (var t in transports)
-                {
-                    if (t is Car) carCount++;
-                }
-
-                Console.WriteLine($"\nКількість транспортних засобів на автостоянці (автомобілів): {carCount}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Помилка: {ex.Message}");
+                transports[i].DisplayInfo();
             }
 
-            if (transports.Count == 0)
+            // Варіант запиту: кількість автомобілів (на автостоянці)
+            int carCount = 0;
+            for (int i = 0; i < count; i++)
             {
-                Console.WriteLine("Результат порожній. Немає транспортних засобів.");
+                if (transports[i] is Car)
+                    carCount++;
             }
+
+            Console.WriteLine($"\nКількість транспортних засобів на автостоянці (автомобілів): {carCount}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Помилка: {ex.Message}");
+        }
+
+        if (count == 0)
+        {
+            Console.WriteLine("Результат порожній. Немає транспортних засобів.");
         }
     }
+}
 }
